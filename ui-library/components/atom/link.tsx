@@ -3,13 +3,16 @@ import Link from "next/link";
 import { Typography } from "./typography";
 
 export const NextLink = (props: any) => {
-  return (
-    <Link {...props}>
-      <StyledTypo variant="body2" sx={props.sx}>
-        {props.children}
-      </StyledTypo>
-    </Link>
-  );
+	return (
+		<Link {...props}>
+			<StyledTypo
+				variant='body2'
+				sx={props.sx}
+			>
+				{props.children}
+			</StyledTypo>
+		</Link>
+	);
 };
 
 //prettier-ignore

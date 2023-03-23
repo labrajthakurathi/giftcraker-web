@@ -1,33 +1,38 @@
 import {
-  Button as MUIButton,
-  ButtonProps,
-  CircularProgress,
-  styled,
+	Button as MUIButton,
+	ButtonProps,
+	CircularProgress,
+	styled,
 } from "@mui/material";
 import React from "react";
 import { Typography } from "./typography";
 
 interface Props extends ButtonProps {
-  loading?: boolean;
-  edge?: "rounded" | "square";
+	loading?: boolean;
+	edge?: "rounded" | "square";
 }
 
 // eslint-disable-next-line react/display-name
 export const Button = React.forwardRef((props: Props, ref: React.Ref<any>) => {
-  const loading = !!props.loading;
-  const edge = props?.edge;
-  return (
-    <StyledMUIButton {...props} loading={loading} edge={edge} ref={ref}>
-      <Typography variant="button2">
-        {loading ? <CircularProgress size={20} /> : props.children}
-      </Typography>
-    </StyledMUIButton>
-  );
+	const loading = !!props.loading;
+	const edge = props?.edge;
+	return (
+		<StyledMUIButton
+			{...props}
+			loading={loading}
+			edge={edge}
+			ref={ref}
+		>
+			<Typography variant='button2'>
+				{loading ? <CircularProgress size={20} /> : props.children}
+			</Typography>
+		</StyledMUIButton>
+	);
 });
 
 interface ExtraProps {
-  loading: boolean;
-  edge: "rounded" | "square" | undefined;
+	loading: boolean;
+	edge: "rounded" | "square" | undefined;
 }
 //prettier-ignore
 const StyledMUIButton = styled(MUIButton)<ExtraProps>(({ theme,loading ,edge}) => `
@@ -48,25 +53,29 @@ const StyledMUIButton = styled(MUIButton)<ExtraProps>(({ theme,loading ,edge}) =
     }
     &.MuiButton-contained {
       padding:10px 16px;
-      background-color:${theme.palette.brand.violet.main};
+      background-color:${theme.palette.brand.red.main};
       
       .MuiTypography-root,path{
         color: ${theme.palette.brand.grey[100]};
       }
       &:hover{
-       background-color:${theme.palette.brand.violet.main + 'D9'};
+       background-color:${theme.palette.brand.red.main + 'D9'};
+      }
+      @media screen and (min-width: ${theme.breakpoints.values.md}px){
+        padding:14px 32px;
       }
       
     }
     &.MuiButton-outlined{
       padding:12px 16px;
-      border:2px solid ${theme.palette.brand.violet.main};
+      border:2px solid ${theme.palette.brand.red.main};
       &:hover{
-        background-color:${theme.palette.brand.violet.main +'1A'}
+        background-color:${theme.palette.brand.red.main +'1A'}
       }
     }
     &.Mui-disabled{
     opacity: 0.5;
   }
+ 
 `
 );

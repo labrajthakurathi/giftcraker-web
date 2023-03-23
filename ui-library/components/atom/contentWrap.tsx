@@ -3,14 +3,14 @@ import { Box, BoxProps, styled } from "@mui/material";
 import React from "react";
 
 export const ContentWrap = (props: BoxProps) => {
-  return <StyledContentWrap {...props}>{props.children}</StyledContentWrap>;
+	return <StyledContentWrap {...props}>{props.children}</StyledContentWrap>;
 };
 
 //prettier-ignore
 const StyledContentWrap = styled(Box)(({ theme }) => `
 margin: 0 auto;
-  padding: 0 12px;
-  width: calc(100% - 24px);
+  padding: 0 18px;
+  width: calc(100% - 36px);
 
   @media screen and (min-width: ${theme.breakpoints.values.sm}px) { //screen size small screen
     padding: 0 24px;
