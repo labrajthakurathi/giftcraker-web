@@ -28,8 +28,7 @@ declare module "@mui/material/styles" {
     };
     brand: {
       blue: Color;
-      violet: Color;
-      lightBlue: Color;
+      red: Color;
       grey: Color & { 50: string };
     };
   }
@@ -54,8 +53,7 @@ declare module "@mui/material/styles" {
     };
     brand?: {
       blue?: Partial<Color>;
-      violet?: Partial<Color>;
-      lightBlue: Partial<Color>;
+      red?: Partial<Color>;
       grey?: Partial<Color & { 50: string }>;
     };
   }

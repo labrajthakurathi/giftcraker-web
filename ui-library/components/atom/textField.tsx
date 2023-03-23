@@ -4,34 +4,37 @@ import { Typography } from "./typography";
 import ErrorIcon from "@mui/icons-material/Error";
 
 type ExtraTypoProps = {
-  component: React.ElementType;
+	component: React.ElementType;
 };
 export const TextField = (props: TextFieldProps, ref: React.Ref<any>) => {
-  return (
-    <StyledMUITextField
-      {...props}
-      size="small"
-      variant="outlined"
-      error={true}
-      label={<Typography variant="eyebrow1">{props.label}</Typography>}
-      helperText={
-        props.error && (
-          <StyledErrorLabel variant="body2" component={"span"}>
-            <ErrorIcon />
-          </StyledErrorLabel>
-        )
-      }
-    />
-  );
+	return (
+		<StyledMUITextField
+			{...props}
+			size='small'
+			variant='outlined'
+			error={true}
+			label={<Typography variant='eyebrow1'> {props.label} </Typography>}
+			helperText={
+				props.error && (
+					<StyledErrorLabel
+						variant='body2'
+						component={"span"}
+					>
+						<ErrorIcon />
+					</StyledErrorLabel>
+				)
+			}
+		/>
+	);
 };
 
 interface ExtraProps {
-  error: boolean;
+	error: boolean;
 }
 
 //prettier-ignore
-const StyledMUITextField = styled(MUITextField)<ExtraProps>(({ theme,error }) => `
-${!error? 'padding-bottom:10px':'' }
+const StyledMUITextField = styled(MUITextField)<ExtraProps>(({ theme, error }) => `
+${!error ? 'padding-bottom:10px' : ''}
 width:100%;
   .MuiOutlinedInput-notchedOutline{
     border-color:${theme.palette.text.primary + '66'} !important;
