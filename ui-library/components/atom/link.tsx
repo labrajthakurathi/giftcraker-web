@@ -6,7 +6,7 @@ export const NextLink = (props: any) => {
 	return (
 		<Link {...props}>
 			<StyledTypo
-				variant='body2'
+				variant={props.variant || "body2"}
 				sx={props.sx}
 			>
 				{props.children}
@@ -18,6 +18,5 @@ export const NextLink = (props: any) => {
 //prettier-ignore
 const StyledTypo = styled(Typography)(({ theme }) => `
     width:fit-content;
-    border-bottom: 1px solid ${theme.palette.text.primary};
 `
 );

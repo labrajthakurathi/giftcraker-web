@@ -24,7 +24,7 @@ const ToggleGroup = (props: ToggleButtonGroupProps) => {
 				width: "100%",
 				display: "flex",
 				flexWrap: "wrap",
-				justifyContent: "space-between",
+				justifyContent: "center",
 				alignItems: "center",
 				gap: 1,
 				border: "0px",
@@ -37,14 +37,13 @@ const ToggleGroup = (props: ToggleButtonGroupProps) => {
 
 export default ToggleGroup;
 
-const StyledToggleGroup = styled(ToggleButtonGroup)(
-	({ theme }) => `
-.MuiToggleButtonGroup-grouped:not(:first-of-type),.MuiToggleButtonGroup-grouped:not(:last-of-type){
-	margin-left: 0px;
-    border-left: 0px solid transparent;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
+//prettier-ignore
+const StyledToggleGroup = styled(ToggleButtonGroup)(({ theme }) => `
+	.MuiToggleButtonGroup-grouped:not(:first-of-type),.MuiToggleButtonGroup-grouped:not(:last-of-type){
+		margin-left: 0px;
+		border-left: 0px solid transparent;
+		border-top-left-radius: 0;
+		border-bottom-left-radius: 0;
 
-}
-`
+	}`
 );

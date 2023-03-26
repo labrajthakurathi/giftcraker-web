@@ -17,6 +17,8 @@ export * from "./atom/alert";
 export * from "./atom/toggleButton";
 export * from "./atom/toggleGroup";
 export * from "./atom/progressBar";
+export * from "./atom/spinner";
+export * from "./atom/badge";
 
 //organisms//
 export * from "./organism/navBar";

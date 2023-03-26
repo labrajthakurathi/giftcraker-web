@@ -11,12 +11,14 @@ export const GlobalStyle = () => {
 	}, []);
 
 	return (
-		<style jsx global>
+		<style
+			jsx
+			global
+		>
 			{`
 				body {
 					transition: all 300ms ease-in;
 					background: ${currentTheme.palette.brand.blue.main};
-					background-image: url("./confetti.png");
 				}
 				* {
 					transition: all 300ms ease-in;

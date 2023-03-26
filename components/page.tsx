@@ -10,7 +10,7 @@ const Page = ({ children }: any) => {
 			<NavBar />
 
 			<GlobalStyle />
-			<ContentWrap sx={{}}>{children}</ContentWrap>
+			<ContentWrap>{children}</ContentWrap>
 		</Box>
 	);
 };

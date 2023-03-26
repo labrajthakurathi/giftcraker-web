@@ -1,15 +1,18 @@
 import { useGlobal } from "@/context/globalContext";
-import { Typography, useMediaQuery } from "@/ui-library";
+import { db } from "@/firebase/clientApp";
+import { Typography } from "@/ui-library";
 import ToggleButton from "@/ui-library/components/atom/toggleButton";
 import ToggleGroup from "@/ui-library/components/atom/toggleGroup";
 import { ThemeContextInterface } from "@/ui-library/interfaces";
 import { ThemeContext } from "@/ui-library/themeContext/themeContext";
-import React, { useContext } from "react";
+import { doc, getDoc } from "firebase/firestore";
+import React, { useContext, useEffect, useState } from "react";
 
-const Occasion = () => {
+const Relationship = () => {
 	const themeContext: ThemeContextInterface = useContext(ThemeContext);
 	const theme = themeContext.currentTheme;
-	const [option, setOption] = React.useState("Wedding");
+	const [option, setOption] = useState("girlfriend");
+	const [tags, setTags] = useState<any>([]);
 	const { setTrigger } = useGlobal();
 	const handleChange = (
 		event: React.MouseEvent<HTMLElement>,
@@ -19,13 +22,28 @@ const Occasion = () => {
 		setOption(newAlignment);
 	};
 
+	useEffect(() => {
+		getFirebaseData();
+	}, []);
+
+	const getFirebaseData = async () => {
+		const docRef = doc(db, "tags", "relationship");
+		const docSnap = await getDoc(docRef);
+		if (docSnap.exists()) {
+			setTags(docSnap.data().tags);
+		} else {
+			// doc.data() will be undefined in this case
+			console.log("No such document!");
+		}
+	};
+
 	return (
 		<>
 			<Typography
 				variant='h2'
 				mb={1.5}
 			>
-				What's the {""}
+				{"What's the"}
 				<span
 					style={{ borderBottom: `3px solid ${theme.palette.brand.red.main}` }}
 				>
@@ -38,23 +56,17 @@ const Occasion = () => {
 				onChange={handleChange}
 				exclusive
 			>
-				<ToggleButton
-					value={"Birthday"}
-					sx={{ marginLeft: "-1px" }}
-				>
-					Birthday
-				</ToggleButton>
-				<ToggleButton value={"Wedding"}>Wedding</ToggleButton>
-				<ToggleButton value={"Mother"}>Mother's Day</ToggleButton>
-				<ToggleButton value={"Father"}>Father's Day</ToggleButton>
-				<ToggleButton value={"House"}>House Warming</ToggleButton>
-				<ToggleButton value={"Date"}>Date</ToggleButton>
-				<ToggleButton value={"Casual"}>Casual visit</ToggleButton>
-				<ToggleButton value={"Promotion"}>Promotion</ToggleButton>
-				<ToggleButton value={"Party"}>Party</ToggleButton>
+				{tags.map((tag: any) => (
+					<ToggleButton
+						value={tag}
+						key={tag}
+					>
+						{tag}
+					</ToggleButton>
+				))}
 			</ToggleGroup>
 		</>
 	);
 };
 
-export default Occasion;
+export default Relationship;

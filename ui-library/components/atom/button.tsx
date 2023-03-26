@@ -14,7 +14,7 @@ interface Props extends ButtonProps {
 
 // eslint-disable-next-line react/display-name
 export const Button = React.forwardRef((props: Props, ref: React.Ref<any>) => {
-	const loading = !!props.loading;
+	const loading: boolean = props?.loading || false;
 	const edge = props?.edge;
 	return (
 		<StyledMUIButton
@@ -23,9 +23,7 @@ export const Button = React.forwardRef((props: Props, ref: React.Ref<any>) => {
 			edge={edge}
 			ref={ref}
 		>
-			<Typography variant='button2'>
-				{loading ? <CircularProgress size={20} /> : props.children}
-			</Typography>
+			<Typography variant='button2'>{props.children}</Typography>
 		</StyledMUIButton>
 	);
 });
