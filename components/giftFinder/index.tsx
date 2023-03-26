@@ -10,7 +10,7 @@ const GiftFinder = () => {
 	return (
 		<Box
 			sx={{
-				height: "100vh",
+				height: "calc(100vh - 50px)",
 				marginTop: "-50px",
 				display: "flex",
 				alignItems: "center",

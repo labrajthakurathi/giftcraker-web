@@ -1,6 +1,7 @@
 import { Box, useMediaQuery, useTheme } from "@/ui-library";
 import React from "react";
 import Bubble from "./bubble";
+import { uuid } from "uuidv4";
 
 const Movables = () => {
 	const theme = useTheme();
@@ -22,7 +23,7 @@ const Movables = () => {
 			}}
 		>
 			{arry.map(() => (
-				<Bubble />
+				<Bubble key={uuid()} />
 			))}
 		</Box>
 	);

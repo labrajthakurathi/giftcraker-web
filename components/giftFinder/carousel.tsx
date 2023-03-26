@@ -3,16 +3,17 @@ import React, { useState } from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
-import Occasion from "@/components/occasion";
-import { useGlobal } from "@/context/globalContext";
+import Occasion from "@/components/giftFinder/occasion";
+import Age from "./age";
+import Relationship from "./relationship";
+import { useRouter } from "next/router";
 
 const GiftFinderCarousel = ({ setIsDisplayName }: any) => {
 	const theme = useTheme();
 	const isMobile = useMediaQuery(theme?.breakpoints.down("md"));
 	const [step, setStep] = useState(1);
-
 	const [loading, setLoading] = useState(false);
-
+	let router = useRouter();
 	const carouselArgs = {
 		showIndicators: false,
 		showThumbs: false,
@@ -22,10 +23,7 @@ const GiftFinderCarousel = ({ setIsDisplayName }: any) => {
 	const handleNext = async (onClickHandler: any) => {
 		if (step === 3) {
 			try {
-				setLoading(true);
-
-				setLoading(false);
-				setIsDisplayName(true);
+				router.push("/gifts");
 			} catch (err) {
 				console.log(err);
 			}
@@ -55,8 +53,8 @@ const GiftFinderCarousel = ({ setIsDisplayName }: any) => {
 					renderArrowPrev={(onClickHandler, hasNext, label) => null}
 					renderArrowNext={(onClickHandler, hasNext, label) => (
 						<Button
-							loading={loading}
 							variant='contained'
+							edge='square'
 							onClick={() => handleNext(onClickHandler)}
 							endIcon={<NavigateNextIcon />}
 							sx={{ position: "absolute", bottom: "0.27rem", right: 0 }}
@@ -69,11 +67,11 @@ const GiftFinderCarousel = ({ setIsDisplayName }: any) => {
 						<Occasion />
 					</StyledBox>
 					<StyledBox>
-						<Occasion />
+						<Age />
 					</StyledBox>
 
 					<StyledBox>
-						<Occasion />
+						<Relationship />
 					</StyledBox>
 					<StyledBox>
 						<Occasion />
@@ -92,7 +90,7 @@ const StyledBox = styled(Box)(({ theme }) => `
     flex-direction: column;
     align-items: flex-start;
     display: flex;
-    borde-radius: 16px; 
+    border-radius: 16px; 
     padding-bottom:60px;
       `
   );
