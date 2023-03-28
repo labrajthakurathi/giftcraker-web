@@ -3,8 +3,10 @@ import React from "react";
 import ProgressBar from "@/ui-library/components/atom/progressBar";
 
 import GiftFinderCarousel from "./carousel";
+import { useGlobal } from "@/context/globalContext";
 
 const GiftFinder = () => {
+	const { step } = useGlobal();
 	const theme = useTheme();
 	const isMobile = useMediaQuery(theme?.breakpoints.down("md"));
 	return (
@@ -26,7 +28,7 @@ const GiftFinder = () => {
 					marginBotom: "24px",
 				}}
 			>
-				<ProgressBar />
+				<ProgressBar step={step} />
 			</Box>
 
 			<GiftFinderCarousel />

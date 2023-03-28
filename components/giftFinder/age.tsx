@@ -5,21 +5,22 @@ import ToggleButton from "@/ui-library/components/atom/toggleButton";
 import ToggleGroup from "@/ui-library/components/atom/toggleGroup";
 import { ThemeContextInterface } from "@/ui-library/interfaces";
 import { ThemeContext } from "@/ui-library/themeContext/themeContext";
+import { styled } from "@mui/material";
 import { doc, getDoc } from "firebase/firestore";
 import React, { useContext, useEffect, useState } from "react";
 
 const Age = () => {
 	const themeContext: ThemeContextInterface = useContext(ThemeContext);
 	const theme = themeContext.currentTheme;
-	const [option, setOption] = useState("25 - 29");
 	const [tags, setTags] = useState<any>([]);
-	const { setTrigger } = useGlobal();
+	const { setTrigger, qa, setQa } = useGlobal();
+
 	const handleChange = (
 		event: React.MouseEvent<HTMLElement>,
-		newAlignment: string
+		newOption: string
 	) => {
 		setTrigger(true);
-		setOption(newAlignment);
+		setQa({ ...qa, age: newOption });
 	};
 
 	useEffect(() => {
@@ -44,15 +45,15 @@ const Age = () => {
 				mb={1.5}
 			>
 				{"What's the "}
-				<span
+				<StyledSpan
 					style={{ borderBottom: `3px solid ${theme.palette.brand.red.main}` }}
 				>
 					Occasion
-				</span>
+				</StyledSpan>
 				?
 			</Typography>
 			<ToggleGroup
-				value={option}
+				value={qa?.age}
 				onChange={handleChange}
 				exclusive
 			>
@@ -70,3 +71,9 @@ const Age = () => {
 };
 
 export default Age;
+
+//prettier-ignore
+const StyledSpan=styled('span')(({theme})=>`
+display:inline-flex;
+border-bottom:4px solid ${theme.palette.brand.red.main};
+`)

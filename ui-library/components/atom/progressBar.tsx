@@ -4,13 +4,10 @@ import Stack from "@mui/material/Stack";
 import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
-import Check from "@mui/icons-material/Check";
 import CelebrationIcon from "@mui/icons-material/Celebration";
 import DateRangeIcon from "@mui/icons-material/DateRange";
-import SettingsIcon from "@mui/icons-material/Settings";
 import Diversity1Icon from "@mui/icons-material/Diversity1";
 import GroupAddIcon from "@mui/icons-material/GroupAdd";
-import VideoLabelIcon from "@mui/icons-material/VideoLabel";
 import StepConnector, {
 	stepConnectorClasses,
 } from "@mui/material/StepConnector";
@@ -92,7 +89,7 @@ const steps = [
 	"Create an end",
 ];
 
-export default function ProgressBar() {
+export default function ProgressBar({ step }: any) {
 	return (
 		<Stack
 			sx={{ width: "100%" }}
@@ -100,7 +97,7 @@ export default function ProgressBar() {
 		>
 			<Stepper
 				alternativeLabel
-				activeStep={0}
+				activeStep={step}
 				connector={<ColorlibConnector />}
 			>
 				{steps.map((label) => (
