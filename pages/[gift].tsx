@@ -97,12 +97,22 @@ export default function Gifts({ data, isDefault }: any) {
 				}}
 			>
 				{isDefault
-					? Object.values(qa).map((item) => <Badge label={item} />)
-					: propsData?.tags.map((tag: any) => <Badge label={tag} />)}
+					? Object.values(qa).map((item) => (
+							<Badge
+								label={item}
+								key={item}
+							/>
+					  ))
+					: propsData?.tags.map((tag: any) => (
+							<Badge
+								label={tag}
+								key={tag}
+							/>
+					  ))}
 			</Box>
 			<Box>
 				<Typography variant='h2'>
-					Here's what we think, they will like
+					{"Here's what we think, they will like"}
 				</Typography>
 				{adId.length === 0 ? (
 					<Loading />
@@ -114,6 +124,7 @@ export default function Gifts({ data, isDefault }: any) {
 									sx={{
 										width: isMobile ? "calc(100% + 36px)" : "100%",
 									}}
+									key={ad}
 								>
 									<div id={`amzn-assoc-ad-${ad}`}></div>
 								</StyledBox>
