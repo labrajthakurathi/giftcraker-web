@@ -14,12 +14,12 @@ export const Metadata = ({
 	adId,
 }: PageHeadProps): JSX.Element => {
 	const scriptTags = adId?.map((ad: string) => (
-		// <script
-		// 	key={ad}
-		// 	src={`//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US&adInstanceId=${ad}`}
-		// />
-		<></>
+		<script
+			key={ad}
+			src={`//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US&adInstanceId=${ad}`}
+		/>
 	));
+
 	return (
 		<Head>
 			<meta
@@ -38,17 +38,21 @@ export const Metadata = ({
 				href='https://firebasestorage.googleapis.com/v0/b/gift-craker.appspot.com/o/app%2Flogo-icon.png?alt=media&token=c6e31882-fbdc-43fe-836d-e116eab67fcc'
 				type='image/x-icon'
 			/>
-			{/* {scriptTags} */}
-			{/* <script type='text/javascript'>
-				amzn_assoc_placement = "adunit0"; amzn_assoc_tracking_id = "10276d-20";
-				amzn_assoc_ad_mode = "search"; amzn_assoc_ad_type = "smart";
-				amzn_assoc_marketplace = "amazon"; amzn_assoc_region = "US";
-				amzn_assoc_default_search_phrase = "gift for dad";
-				amzn_assoc_default_category = "Miscellaneous"; amzn_assoc_linkid =
-				"bcfbf03f8d9cb071b10c830255fd38d2"; amzn_assoc_default_browse_node =
-				"10272111"; amzn_assoc_design = "in_content";
-			</script>
-			<script src='//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US'></script> */}
+			<link
+				rel='preconnect'
+				href='https://fonts.googleapis.com'
+			/>
+			<link
+				rel='preconnect'
+				href='https://fonts.gstatic.com'
+				//@ts-ignore
+				// crossorigin
+			/>
+			<link
+				href='https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800;900&display=swap'
+				rel='stylesheet'
+			></link>
+			{scriptTags}
 			{description?.trim() !== "" && (
 				<meta
 					name='description'

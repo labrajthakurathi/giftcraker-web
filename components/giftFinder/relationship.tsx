@@ -5,21 +5,21 @@ import ToggleButton from "@/ui-library/components/atom/toggleButton";
 import ToggleGroup from "@/ui-library/components/atom/toggleGroup";
 import { ThemeContextInterface } from "@/ui-library/interfaces";
 import { ThemeContext } from "@/ui-library/themeContext/themeContext";
+import { styled } from "@mui/material";
 import { doc, getDoc } from "firebase/firestore";
 import React, { useContext, useEffect, useState } from "react";
 
 const Relationship = () => {
 	const themeContext: ThemeContextInterface = useContext(ThemeContext);
 	const theme = themeContext.currentTheme;
-	const [option, setOption] = useState("girlfriend");
 	const [tags, setTags] = useState<any>([]);
-	const { setTrigger } = useGlobal();
+	const { setTrigger, setQa, qa } = useGlobal();
 	const handleChange = (
 		event: React.MouseEvent<HTMLElement>,
-		newAlignment: string
+		newOption: string
 	) => {
 		setTrigger(true);
-		setOption(newAlignment);
+		setQa({ ...qa, relationship: newOption });
 	};
 
 	useEffect(() => {
@@ -44,15 +44,15 @@ const Relationship = () => {
 				mb={1.5}
 			>
 				{"What's the"}
-				<span
+				<StyledSpan
 					style={{ borderBottom: `3px solid ${theme.palette.brand.red.main}` }}
 				>
 					Occasion
-				</span>
+				</StyledSpan>
 				?
 			</Typography>
 			<ToggleGroup
-				value={option}
+				value={qa?.relationship}
 				onChange={handleChange}
 				exclusive
 			>
@@ -70,3 +70,9 @@ const Relationship = () => {
 };
 
 export default Relationship;
+
+//prettier-ignore
+const StyledSpan=styled('span')(({theme})=>`
+display:inline-flex;
+border-bottom:4px solid ${theme.palette.brand.red.main};
+`)

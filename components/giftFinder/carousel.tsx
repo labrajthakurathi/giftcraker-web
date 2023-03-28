@@ -7,11 +7,12 @@ import Occasion from "@/components/giftFinder/occasion";
 import Age from "./age";
 import Relationship from "./relationship";
 import { useRouter } from "next/router";
+import { useGlobal } from "@/context/globalContext";
 
 const GiftFinderCarousel = ({ setIsDisplayName }: any) => {
 	const theme = useTheme();
 	const isMobile = useMediaQuery(theme?.breakpoints.down("md"));
-	const [step, setStep] = useState(1);
+	const { step, setStep, qa } = useGlobal();
 	const [loading, setLoading] = useState(false);
 	let router = useRouter();
 	const carouselArgs = {
@@ -21,6 +22,7 @@ const GiftFinderCarousel = ({ setIsDisplayName }: any) => {
 	};
 
 	const handleNext = async (onClickHandler: any) => {
+		console.log(qa);
 		if (step === 3) {
 			try {
 				router.push("/gifts");
@@ -47,7 +49,7 @@ const GiftFinderCarousel = ({ setIsDisplayName }: any) => {
 				},
 			}}
 		>
-			<Box sx={{ width: "100%", maxWidth: isMobile ? "480px" : "680px" }}>
+			<Box sx={{ width: "100%", maxWidth: isMobile ? "480px" : "720px" }}>
 				<Carousel
 					{...carouselArgs}
 					renderArrowPrev={(onClickHandler, hasNext, label) => null}
@@ -72,9 +74,6 @@ const GiftFinderCarousel = ({ setIsDisplayName }: any) => {
 
 					<StyledBox>
 						<Relationship />
-					</StyledBox>
-					<StyledBox>
-						<Occasion />
 					</StyledBox>
 				</Carousel>
 			</Box>

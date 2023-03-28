@@ -70,7 +70,7 @@ const theme: ThemeOptions = {
 		},
 	},
 	typography: {
-		fontFamily: '"Expanded", "Helvetica", "Arial", sans-serif',
+		fontFamily: '"Kanit", sans-serif',
 		fontSize: 14,
 		htmlFontSize: 14,
 		fontWeightLight: 300,
@@ -81,18 +81,15 @@ const theme: ThemeOptions = {
 
 		// Headings (special use)
 		xlh1: {
-			fontFamily: '"ExpandedExtraBold","Helvetica", "Arial", sans-serif',
 			fontSize: "5.714rem", // 80px
 			lineHeight: 1, //80px
 			letterSpacing: "-0.03em",
 			"@media (min-width:905px)": {
-				fontFamily: '"ExpandedBold", "Helvetica", "Arial", sans-serif',
 				fontSize: "10.714rem", // 150px
 				lineHeight: 0.933, // 140px
 			},
 		},
 		xlh2: {
-			fontFamily: '"ExpandedBold", "Helvetica", "Arial", sans-serif',
 			fontSize: "3.714rem", // 52px
 			lineHeight: 1,
 			letterSpacing: "-0.03em",
@@ -102,7 +99,6 @@ const theme: ThemeOptions = {
 			},
 		},
 		xlh3: {
-			fontFamily: '"ExpandedBold", "Helvetica", "Arial", sans-serif',
 			fontSize: "3rem", // 42px
 			lineHeight: 1.143, // 48px
 			letterSpacing: "-0.03em",
@@ -112,7 +108,6 @@ const theme: ThemeOptions = {
 			},
 		},
 		xlh4: {
-			fontFamily: '"ExpandedExtraBold","Helvetica", "Arial", sans-serif',
 			fontSize: "3rem", // 42px
 			lineHeight: 1.143, // 48px
 			letterSpacing: "-0.03em",
@@ -124,88 +119,71 @@ const theme: ThemeOptions = {
 
 		// Headings
 		h1: {
-			fontFamily: '"ExpandedBold", "Helvetica", "Arial", sans-serif',
+			fontWeight: 700,
 			fontSize: "3rem", // 3 * 14px = 42px
 			lineHeight: 1,
-			letterSpacing: "-0.015em",
+
 			"@media (min-width:905px)": {
 				fontSize: "5.714rem", // 80px
 				lineHeight: 1.2, // 96px
-				letterSpacing: "-0.025em",
 			},
 		},
 		h2: {
-			fontFamily: '"ExpandedBold", "Helvetica", "Arial", sans-serif',
 			fontSize: "2.571rem", // 36px
 			lineHeight: 1.167, // 36px * 1.167 ~= 42px
-			letterSpacing: "-0.015em",
 			"@media (min-width:905px)": {
 				fontSize: "5rem", // 70px
-				lineHeight: 1.2, // 84px
-				letterSpacing: "-0.025em",
+				lineHeight: 1.1, // 84px
 			},
 		},
 		h3: {
-			fontFamily: '"ExpandedBold", "Helvetica", "Arial", sans-serif',
 			fontSize: "2.286rem", // 32px
 			lineHeight: 1.188, // 38px
-			letterSpacing: "-0.015em",
+
 			"@media (min-width:905px)": {
 				fontSize: "3.571rem", // 50px
 				lineHeight: 1.2, // 60px
-				letterSpacing: "-0.02em",
 			},
 		},
 		h4: {
-			fontFamily: '"ExpandedBold", "Helvetica", "Arial", sans-serif',
 			fontSize: "2rem", // 28px
 			lineHeight: 1.214, // 34px
-			letterSpacing: "0em",
+
 			"@media (min-width:905px)": {
 				fontSize: "2.857rem", // 40px
 				lineHeight: 1.2, // 48px
-				letterSpacing: "-0.02em",
 			},
 		},
 		h5: {
-			fontFamily: '"ExpandedBold", "Helvetica", "Arial", sans-serif',
 			fontSize: "1.714rem", // 24px
 			lineHeight: 1.167, // 28px
-			letterSpacing: "0em",
 			"@media (min-width:905px)": {
-				fontFamily: '"ExpandedDemiBold", "Helvetica", "Arial", sans-serif',
 				fontSize: "2.286rem", // 32px
 				lineHeight: 1.1875, // 38px
-				letterSpacing: "-0.025em",
 			},
 		},
 		h6: {
-			fontFamily: '"ExpandedBold", "Helvetica", "Arial", sans-serif',
 			fontSize: "1.429rem", // 20px
 			lineHeight: 1.3, // 26px
-			letterSpacing: "0em",
+
 			"@media (min-width:905px)": {
 				fontSize: "1.571rem", // 22px
 				lineHeight: 1.182, // 26px
-				letterSpacing: "-0.025em",
 			},
 		},
 
 		// Sub Headings
 		subtitleLarge: {
-			fontFamily: '"ExpandedBold", "Helvetica", "Arial", sans-serif',
 			fontSize: "1.286rem", // 18px
 			lineHeight: 1.222, // 22px
 			letterSpacing: "0em",
 		},
 		subtitle1: {
-			fontFamily: '"ExpandedBold", "Helvetica", "Arial", sans-serif',
 			fontSize: "1.143rem", // 16px
 			lineHeight: 1.375, // 22px
 			letterSpacing: "0em",
 		},
 		subtitle2: {
-			fontFamily: '"ExpandedBold", "Helvetica", "Arial", sans-serif',
 			fontSize: "0.857rem", // 12px
 			lineHeight: 1.333, // 16px
 			letterSpacing: "0em",
@@ -213,7 +191,6 @@ const theme: ThemeOptions = {
 
 		// Body
 		bodyXl: {
-			fontFamily: '"ExpandedBold", "Helvetica", "Arial", sans-serif',
 			fontSize: "1.286rem", // 18px
 			lineHeight: 1.222, // 22px
 			letterSpacing: "0em",
@@ -244,7 +221,6 @@ const theme: ThemeOptions = {
 			letterSpacing: "0.01em",
 		},
 		overline: {
-			fontFamily: '"ExpandedBold", "Helvetica", "Arial", sans-serif',
 			fontSize: "1.143rem", // 16px
 			textTransform: "none",
 			lineHeight: 1.1875, // 19px
@@ -256,13 +232,11 @@ const theme: ThemeOptions = {
 
 		// Button
 		button1: {
-			fontFamily: '"ExpandedDemiBold", "Helvetica", "Arial", sans-serif',
 			fontSize: "1.429rem", // 20px
 			lineHeight: 1, // 20px
 			letterSpacing: "0em",
 		},
 		button2: {
-			fontFamily: '"ExpandedDemiBold", "Helvetica", "Arial", sans-serif',
 			fontSize: "1.143rem", // 16px
 			lineHeight: 1.25, // 20px
 			letterSpacing: "0em",
@@ -270,31 +244,26 @@ const theme: ThemeOptions = {
 
 		// Utility
 		navLink: {
-			fontFamily: '"ExpandedBold", "Helvetica", "Arial", sans-serif',
 			fontSize: "1.071rem", // 15px
 			lineHeight: 1.2, // 18px
 			letterSpacing: "0.025em",
 		},
 		link: {
-			fontFamily: '"ExpandedBold", "Helvetica", "Arial", sans-serif',
 			fontSize: "1rem", // 14px
 			lineHeight: 1.286, // 18px
 			letterSpacing: "0.025em",
 		},
 		input: {
-			fontFamily: '"ExpandedDemiBold", "Helvetica", "Arial", sans-serif',
 			fontSize: "1.143rem", // 16px
 			lineHeight: 1, // 16px
 			letterSpacing: "0.01em",
 			"@media (min-width:905px)": {
-				fontFamily: '"Expanded", "Helvetica", "Arial", sans-serif',
 				fontSize: "1.286rem", // 18px
 				lineHeight: 1.222, // 22px
 				letterSpacing: "0em",
 			},
 		},
 		formErrorMessage: {
-			fontFamily: '"ExpandedBold", "Helvetica", "Arial", sans-serif',
 			fontSize: "0.714rem", // 10px
 			lineHeight: 1.4, // 14px
 			letterSpacing: "0.02em",
@@ -307,13 +276,11 @@ const theme: ThemeOptions = {
 
 		// Eyebrows
 		eyebrow1: {
-			fontFamily: '"ExpandedBold", "Helvetica", "Arial", sans-serif',
 			fontSize: "0.857rem", // 12px
 			lineHeight: 1.333, // 16px
 			letterSpacing: "0em",
 		},
 		eyebrow2: {
-			fontFamily: '"ExpandedBold", "Helvetica", "Arial", sans-serif',
 			fontSize: "0.714rem", // 10px
 			lineHeight: 1.4, // 14px
 			letterSpacing: "0.3em",
@@ -321,19 +288,16 @@ const theme: ThemeOptions = {
 
 		// Spec Sheet
 		rowTitle: {
-			fontFamily: '"ExpandedBold", "Helvetica", "Arial", sans-serif',
 			fontSize: "1.429rem", // 20px
 			lineHeight: 1.2, // 24px
 			letterSpacing: "-0.02em",
 		},
 		subRowTitle: {
-			fontFamily: '"ExpandedBold", "Helvetica", "Arial", sans-serif',
 			fontSize: "1.143rem", // 16px
 			lineHeight: 1.25, // 20px
 			letterSpacing: "0em",
 		},
 		item: {
-			fontFamily: '"ExpandedDemiBold", "Helvetica", "Arial", sans-serif',
 			fontSize: "1.143rem", // 14px
 			lineHeight: 1.25, // 20px
 			letterSpacing: "0em",
