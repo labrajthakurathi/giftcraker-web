@@ -8,7 +8,6 @@ export * from "../themes";
 
 //atoms//
 export * from "./atom/typography";
-export * from "./atom/textField";
 export * from "./atom/box";
 export * from "./atom/contentWrap";
 export * from "./atom/button";

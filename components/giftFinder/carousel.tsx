@@ -14,6 +14,7 @@ const GiftFinderCarousel = ({ setIsDisplayName }: any) => {
 	const isMobile = useMediaQuery(theme?.breakpoints.down("md"));
 	const { step, setStep, qa } = useGlobal();
 	const [loading, setLoading] = useState(false);
+
 	let router = useRouter();
 	const carouselArgs = {
 		showIndicators: false,
