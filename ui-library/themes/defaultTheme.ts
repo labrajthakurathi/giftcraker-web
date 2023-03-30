@@ -232,11 +232,13 @@ const theme: ThemeOptions = {
 
 		// Button
 		button1: {
+			fontWeight: 200,
 			fontSize: "1.429rem", // 20px
 			lineHeight: 1, // 20px
 			letterSpacing: "0em",
 		},
 		button2: {
+			fontWeight: 400,
 			fontSize: "1.143rem", // 16px
 			lineHeight: 1.25, // 20px
 			letterSpacing: "0em",
