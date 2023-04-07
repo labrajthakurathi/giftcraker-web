@@ -5,8 +5,10 @@ import Loading from "../loading";
 
 const GiftSection = ({ adId }: any) => {
 	const [isMobile, setIsMobile] = useState(false);
-	const ourpickcol = Math.ceil(Math.random() * adId.length + 1);
-	const ourpickrow = Math.ceil(Math.random() * adId.length - 1);
+	const ourpickcol =
+		adId.length > 0 && Math.ceil(Math.random() * adId.length + 1);
+	const ourpickrow =
+		adId.length > 0 && Math.ceil(Math.random() * adId.length - 1);
 	useEffect(() => {
 		const userAgent = window.navigator.userAgent;
 		const isMobileDevice =
@@ -17,8 +19,8 @@ const GiftSection = ({ adId }: any) => {
 
 	return (
 		<StyledBoxWrapper
-			ourpickcol={ourpickcol}
-			ourpickrow={ourpickrow}
+			ourpickcol={ourpickcol || 0}
+			ourpickrow={ourpickrow || 0}
 		>
 			<Typography
 				variant='h3'
@@ -39,6 +41,7 @@ const GiftSection = ({ adId }: any) => {
 								}}
 								key={ad}
 							>
+								<>{ad}</>
 								<div id={`amzn-assoc-ad-${ad}`}></div>
 							</StyledBox>
 						);

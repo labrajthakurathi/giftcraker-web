@@ -6,7 +6,12 @@ import {
 	useEffect,
 	useState,
 } from "react";
-
+export type Itopic = "occasion" | "age" | "relationship";
+export type Tags = {
+	age: Array<string>;
+	relationship: Array<string>;
+	occasion: Array<string>;
+};
 interface GlobalContextTypes {
 	trigger: boolean;
 	setTrigger: Dispatch<SetStateAction<boolean>>;
@@ -14,13 +19,15 @@ interface GlobalContextTypes {
 	setStep: Dispatch<SetStateAction<number>>;
 	qa: Iqa;
 	setQa: Dispatch<SetStateAction<Iqa>>;
+	tags: Tags | undefined;
+	setTags: Dispatch<SetStateAction<Tags | undefined>>;
 }
 
 const GlobalContext = createContext<GlobalContextTypes>(
 	{} as GlobalContextTypes
 );
 
-type Iqa = {
+export type Iqa = {
 	occasion: string;
 	age: string;
 	relationship: string;
@@ -34,6 +41,7 @@ export const GlobalContextProvider = ({
 }) => {
 	const [trigger, setTrigger] = useState<boolean>(false);
 	const [step, setStep] = useState<number>(0);
+	const [tags, setTags] = useState<Tags>();
 
 	const [qa, setQa] = useState<Iqa>({
 		occasion: "birthday",
@@ -49,7 +57,7 @@ export const GlobalContextProvider = ({
 
 	return (
 		<GlobalContext.Provider
-			value={{ trigger, setTrigger, step, setStep, qa, setQa }}
+			value={{ trigger, setTrigger, step, setStep, qa, setQa, tags, setTags }}
 		>
 			{children}
 		</GlobalContext.Provider>

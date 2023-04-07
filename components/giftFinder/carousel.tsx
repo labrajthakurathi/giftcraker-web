@@ -3,13 +3,11 @@ import React, { useState } from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
-import Occasion from "@/components/giftFinder/occasion";
-import Age from "./age";
-import Relationship from "./relationship";
 import { useRouter } from "next/router";
-import { useGlobal } from "@/context/globalContext";
+import { Itopic, useGlobal } from "@/context/globalContext";
+import Question from "./question";
 
-const GiftFinderCarousel = ({ setIsDisplayName }: any) => {
+const GiftFinderCarousel = () => {
 	const theme = useTheme();
 	const isMobile = useMediaQuery(theme?.breakpoints.down("md"));
 	const { step, setStep, qa } = useGlobal();
@@ -35,6 +33,17 @@ const GiftFinderCarousel = ({ setIsDisplayName }: any) => {
 			setStep(step + 1);
 		}
 	};
+
+	type Section = {
+		topic: Itopic;
+		title: string;
+	};
+
+	const sections: Array<Section> = [
+		{ topic: "occasion", title: "What's the " },
+		{ topic: "age", title: "What's the " },
+		{ topic: "relationship", title: "What's the " },
+	];
 
 	return (
 		<Box
@@ -66,16 +75,15 @@ const GiftFinderCarousel = ({ setIsDisplayName }: any) => {
 						</Button>
 					)}
 				>
-					<StyledBox>
-						<Occasion />
-					</StyledBox>
-					<StyledBox>
-						<Age />
-					</StyledBox>
-
-					<StyledBox>
-						<Relationship />
-					</StyledBox>
+					{sections.map((section: Section) => (
+						<StyledBox>
+							<Question
+								key={section?.topic}
+								topic={section?.topic}
+								title={section?.title}
+							/>
+						</StyledBox>
+					))}
 				</Carousel>
 			</Box>
 		</Box>

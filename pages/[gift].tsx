@@ -1,27 +1,18 @@
-import * as React from "react";
+import React from "react";
 import { Box, Button } from "@/ui-library";
 import { Metadata } from "@/components/metadata";
 import { useEffect, useState } from "react";
-import { doc, getDoc } from "firebase/firestore";
-import { db } from "@/firebase/clientApp";
 import { defaultGiftPageMetadata } from "@/constants";
 import Badges from "@/components/gift/badges";
 import GiftSection from "@/components/gift/giftSection";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
+import useFirebaseFetchData from "@/hooks/useFirebaseFetchData";
 
 export const getStaticPaths = async () => {
-	let dta;
-	const docRef = doc(db, "urls", "gift");
-	const docSnap = await getDoc(docRef);
+	const res: any = await useFirebaseFetchData("urls", "gift");
+	let data = res.urld;
 
-	if (docSnap.exists()) {
-		dta = docSnap.data()?.urld;
-	} else {
-		// doc.data() will be undefined in this case
-		console.log("No such document!");
-	}
-
-	const paths = dta.map((item: string) => {
+	const paths = data.map((item: string) => {
 		return {
 			params: { gift: item },
 		};
@@ -34,56 +25,40 @@ export const getStaticPaths = async () => {
 };
 export async function getStaticProps(context: any) {
 	const { params } = context;
+	const isDefault = params.gift;
 	let dta;
 
 	if (params.gift !== "gifts") {
-		const docRef = doc(db, "dataFromUrl", params.gift);
-		const docSnap = await getDoc(docRef);
-
-		if (docSnap.exists()) {
-			dta = docSnap.data();
-		} else {
-			// doc.data() will be undefined in this case
-			console.log("No such document!");
-		}
+		dta = await useFirebaseFetchData("dataFromUrl", params.gift);
 	}
 
 	return {
 		props: {
-			data: params.gift === "gifts" ? null : dta,
-			isDefault: params.gift === "gifts" ? true : false,
+			data: isDefault ? null : dta,
+			isDefault,
 		},
 	};
 }
-
-export default function Gifts({ data, isDefault }: any) {
+const Gifts = ({ data, isDefault }: any) => {
 	const [adId, setAdId] = useState([]);
-	const [propsData, setPropsData] = useState(data);
-
 	const metaObj = isDefault ? defaultGiftPageMetadata : data?.metaData;
-	console.log({ data });
+
 	const metadata = {
 		...metaObj,
 		adId: adId,
 	};
-	useEffect(() => {
-		getFirebaseData();
-	}, []);
 
-	const getFirebaseData = async () => {
-		if (isDefault) {
-			const docRef = doc(db, "links", "dad");
-			const docSnap = await getDoc(docRef);
-			if (docSnap.exists()) {
-				setAdId(docSnap.data().adId);
+	useEffect(() => {
+		const populateData = async () => {
+			if (isDefault) {
+				let res: any = await useFirebaseFetchData("links", "wedding");
+				setAdId(res?.adId);
 			} else {
-				// doc.data() will be undefined in this case
-				console.log("No such document!");
+				setAdId(data?.adId);
 			}
-		} else {
-			setAdId(propsData?.adId);
-		}
-	};
+		};
+		populateData();
+	}, []);
 
 	return (
 		<Box>
@@ -93,15 +68,17 @@ export default function Gifts({ data, isDefault }: any) {
 				startIcon={
 					<KeyboardBackspaceIcon sx={{ fontSize: "2rem !important" }} />
 				}
-				sx={{ mt: 6, mb: 1 }}
+				sx={{ mt: 5, mb: 1 }}
 			>
 				Gift Finder
 			</Button>
 			<Badges
 				isDefault={isDefault}
-				propsData={propsData}
+				propsData={data}
 			/>
 			<GiftSection adId={adId} />
 		</Box>
 	);
-}
+};
+
+export default Gifts;
